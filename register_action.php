@@ -3,12 +3,27 @@
 include "../db.php";
 session_start();
 
+$email = $_POST['email'];
+$query = $db->prepare( "SELECT `email` FROM `projekt_prihlaseni` WHERE `email` = '$email'" );
+$query->bindValue( 1, $email );
+$query->execute();
+
 if (ctype_alpha($_POST["password"])) {
 	echo "Zadané heslo musí obsahovat alespoň jedno číslo!";
 	echo "<br>";
-	echo "<a href='register.php'>Zkus to znovu !</a>";
+	echo "<a href='../index.php'>Zkus to znovu !</a>";
 } elseif (ctype_alpha($_POST["email"])) {
 	echo "Email nesmí obsahovat jiné než povolené znaky";
+	echo "<br>";
+	echo "<a href='../index.php'>Zkus to znovu !</a>";
+} elseif (strlen($_POST['password']) < 6) {
+	echo "Heslo musí obsahovat minimálně 6 znaků a minimálně jedno číslo.";
+	echo "<br>";
+	echo "<a href='../index.php'>Zkus to znovu !</a>";
+} elseif ($query->rowCount() > 	0) {
+	echo "Email je již zaregistrován"; 
+	echo "<br>";
+	echo "<a href='../index.php'>Zkus to znovu !</a>";
 } elseif (!empty($_POST['email']) AND !empty($_POST['password'])) {
 
 	$password = hash('sha512', $_POST["password"]);
@@ -17,7 +32,7 @@ if (ctype_alpha($_POST["password"])) {
 	$pole_dat = array('email' => $_POST['email'], ':password' => $password);
 	$priprava->execute($pole_dat);
 	header("location: /Prihlaseni/login.php");
-	}  else {
+}  else {
 		echo $_POST['email'];
 		echo $_POST['password'];
 } 

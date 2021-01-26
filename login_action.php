@@ -9,6 +9,12 @@ if (ctype_alpha($_POST["password"])) {
 	echo "<a href='login.php'>Zkus to znovu !</a>";
 } elseif (ctype_alpha($_POST["email"])) {
 	echo "Email nesmí obsahovat jiné než povolené znaky";
+	echo "<br>";
+	echo "<a href='login.php'>Zkus to znovu !</a>";
+} elseif (strlen($_POST['password']) < 6) {
+	echo "Heslo musí obsahovat minimálně 6 znaků a minimálně jedno číslo.";
+	echo "<br>";
+	echo "<a href='login.php'>Zkus to znovu !</a>";
 } elseif (isset($_POST["Prihlasit"])) {
 
 	$email = $_POST['email'];
