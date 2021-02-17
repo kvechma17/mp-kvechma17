@@ -3,7 +3,11 @@
 include "../db.php";
 session_start();
 
-if (ctype_alpha($_POST["password"])) {
+if (empty($_POST['email']) && empty($_POST['password'])) {
+ 	echo "Doplňte chybějící údaje!";
+ 	echo "<br>";
+ 	echo "<a href='login.php'>Zkus to znovu !</a>";
+} elseif (ctype_alpha($_POST["password"])) {
 	echo "Zadané heslo musí obsahovat alespoň jedno číslo!";
 	echo "<br>";
 	echo "<a href='login.php'>Zkus to znovu !</a>";
@@ -15,7 +19,7 @@ if (ctype_alpha($_POST["password"])) {
 	echo "Heslo musí obsahovat minimálně 6 znaků a minimálně jedno číslo.";
 	echo "<br>";
 	echo "<a href='login.php'>Zkus to znovu !</a>";
-} elseif (isset($_POST["Prihlasit"])) {
+} elseif (isset($_POST["Přihlásit"])) {
 
 	$email = $_POST['email'];
 	$password = hash('sha512', $_POST["password"]);
@@ -28,7 +32,8 @@ if (ctype_alpha($_POST["password"])) {
 	if ($data == FALSE) {
 		header('location: login.php');
 	} else {
-		$_SESSION['loggedIn'] = true;  
+		$_SESSION['logged'] = "OK";  
+		$_SESSION['email'] = $_POST['email'];
 		header('location: /Homepage/homepage.php');
 	}
  }

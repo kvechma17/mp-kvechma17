@@ -27,7 +27,7 @@
 			<input type="email" name="email" placeholder="Email"><br>
 			<input type="password" name="password" placeholder="Password"><br>
 			<a href="../index.php">Registrace</a>
-			<input type="submit" name="Prihlasit" value="Prihlasit" id="submit">
+			<input type="submit" name="Přihlásit" value="Přihlásit" id="submit">
 		  
         </div>
 

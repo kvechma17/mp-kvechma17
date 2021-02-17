@@ -21,7 +21,8 @@
         <div class="inputs">
         
             <input type="email" name="email" placeholder="Email"><br>
-			<input type="password" name="password" placeholder="Password"><br>
+			<input type="password" name="password" placeholder="Heslo"><br>
+			<input type="password" name="password2" placeholder="Heslo znovu"><br>
 			<a href="/Prihlaseni/login.php" id="Login">Přihlášení</a>
 			<input type="submit" name="Registrovat" value="Registrovat" id="submit">
         	

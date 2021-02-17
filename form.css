@@ -27,7 +27,7 @@ body {
 }
 
 #signup .header h3 {
-    color: #ff6a00;
+    color: #242424;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -35,7 +35,7 @@ body {
 }
 
 #signup .header p {
-    color: #ff8300;
+    color: #242424;
     font-size: 14px;
     font-weight: 300;
 }
@@ -107,13 +107,13 @@ input:-moz-placeholder {
     text-decoration: none;
         background: -moz-linear-gradient(
         top,
-        #ff8a38 0%,
-        #ff8300);
+        #242424 0%,
+        #242424);
     background: -webkit-gradient(
         linear, left top, left bottom, 
-        from(#ff8a38),
-        to(#ff8a38));
-    -moz-border-radius: 5px;
+        from(#242424),
+        to(#242424));
+    -moz-border-radius: 5px;    
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #737b8d;
@@ -137,10 +137,10 @@ input:-moz-placeholder {
 #signup .inputs #submit:hover {
     background: -moz-linear-gradient(
         top,
-        #ff7f00 0%,
-        #ff7f00);
+        #303030 0%,
+        #303030);
     background: -webkit-gradient(
         linear, left top, left bottom, 
-        from(#ff7f00),
-        to(#ff7f00));
+        from(#303030),
+        to(#303030));
 }

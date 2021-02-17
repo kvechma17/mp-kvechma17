@@ -1,7 +1,10 @@
 <?php
-session_start();
-  if($_SESSION['loggedIn']) {
 
+session_start();
+include "../db.php";
+
+  if($_SESSION["logged"] == "OK") {
+  	echo "Přihlášen jako:\n" . $_SESSION['email'];
   } else {
       header('Location: /Prihlaseni/login.php');  
   }
@@ -21,21 +24,26 @@ session_start();
 		<div class="title">
 			<h2>Šifrování textu</h2>
 		<div class="content">
-			<form method="POST" action="HomepageNapsatUkol_action.php">
+			<form method="POST" action="encrypt_action.php">
+
+					<input type="hidden" name="id" value="<?php echo $_SESSION['id']?>"></input>
 
 				<div class="row half">
 
-					<div class="12u">
-						<textarea name="Ukol" placeholder="Zde napište text pro zašifrování"></textarea>
+					<div>
+						<textarea name="message"  placeholder="Zde napište text pro zašifrování"></textarea>
+					</div>
+
+					<div>
+						<input type="text" name="key" placeholder="Klíč pro zašifrování"></input>
 					</div>
 
 				</div>
 
 				<div class="kategorie">
-						<select name="kategorie_ukol" value="kategorie_ukol" class="text">
-							<option value="School">School</option>
-							<option value="Personal">Personal</option>
-							<option value="Important">Important</option>
+
+						<select value="kategorie" class="text">
+							<option value="AES">AES 256</option>
 						</select>
 
 				</div>
